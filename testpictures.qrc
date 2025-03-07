@@ -1,8 +1,8 @@
 <RCC>
   <qresource prefix="png">
-    <file>clock.drawio</file>
+    <file>uiPictures/clock.drawio</file>
     <file>uiPictures/goBackArrow.drawio</file>
-    <file>calendar.drawio</file>
+    <file>uiPictures/calendar.drawio</file>
     <file>uiPictures/key.png</file>
     <file>uiPictures/student.png</file>
     <file>uiPictures/studentAndKey.png</file>
