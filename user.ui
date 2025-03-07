@@ -231,7 +231,7 @@ color: rgb(0, 33, 72);</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="testpictures.qrc">:/png/calendar.drawio</pixmap>
+      <pixmap resource="testpictures.qrc">:/png/uiPictures/calendar.drawio</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -266,7 +266,7 @@ color: rgb(0, 33, 72);</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="testpictures.qrc">:/png/clock.drawio</pixmap>
+      <pixmap resource="testpictures.qrc">:/png/uiPictures/clock.drawio</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
