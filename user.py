@@ -305,7 +305,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             resultSet = dbConnection.filterColumsFromTable('auto', ['kuva'], criteria)
             row = resultSet[0]
             picture = row[0] #PNG tai JPG kuva tietokannasta
-            print('kuva on', picture)
             
             # Write the binary data to a file to store png or jpeg data
             with open('currentCar.png', 'wb') as temporaryFile:
@@ -378,7 +377,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.ui.savePushButton.hide()
         self.ui.statusLabel.show()
         self.ui.saveReturnPushButton.show()
-        self.ui.returnDayLabel.hide()
         self.ui.keyBarcodeReturnLineEdit.setFocus()
         
     # Tallennetaan palautuksen tiedot tietokantaan ja palautetaan UI alkutilaan
@@ -403,6 +401,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     
     def goBack(self):
         self.setInitialElements()
+        self.ui.statusLabel.setText('Autonlainaus')
         self.ui.statusbar.showMessage('Toiminto peruutettiin', 5000)
 
     # Metodi monirivisen luettelon muodostamiseen taulu tai näkymän datasta
@@ -418,20 +417,28 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         Returns:
             str: Plain text for thr catalog
         """
-        # määritellään vapaana olevien autojen tiedot
-        #availablePlainTextEdit
+        # Määritellään vapaana oleliven autojen tiedot
+        # availablePlainTextEdit-elementtiin
         catalogData = ''
         rowText = ''
             
-        for vehiclTuple in tupleList:
+        for vehiclTtuple in tupleList:
             rowData = ''
-            for vehicleData in vehiclTuple:
-                rowData = rowData + f'{vehicleData} '
+            for vehicleData in vehiclTtuple:
+                vehicleDataAsStr = str(vehicleData)
+                if vehicleDataAsStr == 'True':
+                    replacedVehicleData = 'automaatti'
+                elif vehicleDataAsStr == 'False':
+                    replacedVehicleData = 'manuaali'
+                else:
+                    replacedVehicleData = vehicleDataAsStr
+                # replacedVehicleData = vehicleDataAsStr.replace('False', '')
+                rowData = rowData + f'{replacedVehicleData} '
+                
             rowText = rowData + f'{suffix}\n'
             catalogData = catalogData + rowText
         return catalogData
-
-            
+    
   # Avataan MessageBox
     # Malli mahdollista virheilmoitusta varten
     def openWarning(self, title: str, text:str, detailedText:str) -> None: 

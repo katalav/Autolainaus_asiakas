@@ -207,7 +207,6 @@ class DbConnection():
             
             # Määritellään lopullinen SQL-lause
             sqlClause = f'SELECT {cleanedColumnString} FROM {table} WHERE {filter};'
-            print(sqlClause)
             # Suoritetaan SQL-lause ja luetaan tulokset kursorista
             cursor.execute(sqlClause)
             records= cursor.fetchall()
@@ -295,7 +294,6 @@ class DbConnection():
 
             # Määritellään lopullinen SQL-lause
             sqlClause = f'UPDATE {table} SET {column} = {newValue} WHERE {criteriaColumn} = {criteriaValue}'
-            print(sqlClause)
             # Suoritetaan SQL-lause
             cursor.execute(sqlClause)
 
@@ -332,7 +330,6 @@ class DbConnection():
 
             # Määritellään lopullinen SQL-lause, paikkamerkki %s korvautuu binääritiedolla
             sqlClause = f'UPDATE {table} SET  {column} = %s WHERE {criteriaColumn} = {criteriaValue}'
-            print(sqlClause)
             # Suoritetaan SQL-lause
             cursor.execute(sqlClause, (data,))
 
@@ -359,7 +356,6 @@ class DbConnection():
 
             # Määritellään lopullinen SQL-lause, paikkamerkki %s korvautuu binääritiedolla
             sqlClause = f'DELETE FROM {table} WHERE {criteriaColumn} = {criteriaValue}'
-            print(sqlClause)
             # Suoritetaan SQL-lause
             cursor.execute(sqlClause)
 
@@ -385,4 +381,3 @@ if __name__ == '__main':
                       'password': 'Q2werty' }
 
     dbConnection = DbConnection(settingsDictionary)
-    print(dbConnection.connectionString)
