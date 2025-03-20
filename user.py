@@ -163,9 +163,10 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             # Luodaan tietokantayhteys-olio
             dbConnection = dbOperations.DbConnection(dbSettings)
             freeVehicles = dbConnection.readAllColumnsFromTable('vapaana')
+           
            # muodostetaan luettelo vapaista autoista createCatalog-metodilla
-            catalogData = self.createCatalog(freeVehicles, 'paikkaa')
 
+            catalogData = self.createCatalog(freeVehicles, 'paikkaa')
             self.ui.availablePlainTextEdit.setPlainText(catalogData)
             
         except Exception as e:
@@ -178,10 +179,37 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         try:
             # Luodaan tietokantayhteys-olio
             dbConnection = dbOperations.DbConnection(dbSettings)
-            rentedVehicles = dbConnection.readAllColumnsFromTable('ajossa')
+            # Luodaan ajossa näkymästä lista, jonka jäsenet ovat monikoita (tuple)
+            inUseVehicles = dbConnection.readAllColumnsFromTable('ajossa')
+            
+            # Alustetaan tyhjä lista muokattuja autotietoja varten
+            modifiedInUseVehiclesList = []
+            
+            # alustetaan tyhjä lista, jotta monikkoon voi tehdä muutoksia
+            modifiedInUseVehicles = []
+            # Käydään lista läpi ja lisätään monikon alkiot lista
+            for vehicleTuple in inUseVehicles:
+                
+                modifiedInUseVehicles.append(vehicleTuple[0])
+                modifiedInUseVehicles.append(vehicleTuple[1])
+                modifiedInUseVehicles.append(vehicleTuple[2])
+                modifiedInUseVehicles.append(vehicleTuple[3])
+                modifiedInUseVehicles.append(vehicleTuple[4])
+                
+                # Lisätään sana paikkaa
+                modifiedInUseVehicles.append('paikkaa')
+                modifiedInUseVehicles.append(vehicleTuple[5])
+                
+                # Muutetaan lista takaisin monikoksi
+                modifiedInUseVehicleTuple = tuple(modifiedInUseVehicles)
+                
+                # Lisätään monikko lopulliseej listaan
+                modifiedInUseVehiclesList.append(modifiedInUseVehicleTuple)
+                
            # muodostetaan luettelo vapaista autoista createCatalog-metodilla
-            catalogData = self.createCatalog(rentedVehicles)
-
+            catalogData = self.createCatalog(modifiedInUseVehiclesList)
+            print(modifiedInUseVehiclesList)
+            print(catalogData)
             self.ui.rentedPlainTextEdit.setPlainText(catalogData)
             
         except Exception as e:
@@ -380,7 +408,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.ui.keyBarcodeReturnLineEdit.setFocus()
         
     # Tallennetaan palautuksen tiedot tietokantaan ja palautetaan UI alkutilaan
-
+   
     def saveReturnData(self):
 
         # Save data to the database
@@ -391,7 +419,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         dbConnection = dbOperations.DbConnection(dbSettings)
         criteria = f"'{self.ui.keyBarcodeReturnLineEdit.text()}'" # Tekstiä -> Lisää ':t
         
-        dbConnection.modifyTableData('lainaus', 'palautus','CURRENT_TIMESTAMP', 'rekisterinumero', criteria)        
+        dbConnection.modifyTableData('lainaus', 'palautus', 'CURRENT_TIMESTAMP', 'rekisterinumero', criteria)        
         
         self.ui.statusbar.showMessage('auto palautettu')
         self.setInitialElements()

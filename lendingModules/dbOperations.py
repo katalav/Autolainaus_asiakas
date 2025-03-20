@@ -294,6 +294,7 @@ class DbConnection():
 
             # Määritellään lopullinen SQL-lause
             sqlClause = f'UPDATE {table} SET {column} = {newValue} WHERE {criteriaColumn} = {criteriaValue}'
+            print(sqlClause)
             # Suoritetaan SQL-lause
             cursor.execute(sqlClause)
 
@@ -356,6 +357,7 @@ class DbConnection():
 
             # Määritellään lopullinen SQL-lause, paikkamerkki %s korvautuu binääritiedolla
             sqlClause = f'DELETE FROM {table} WHERE {criteriaColumn} = {criteriaValue}'
+            print(sqlClause)
             # Suoritetaan SQL-lause
             cursor.execute(sqlClause)
 
