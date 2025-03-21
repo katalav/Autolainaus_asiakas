@@ -207,6 +207,7 @@ class DbConnection():
             
             # Määritellään lopullinen SQL-lause
             sqlClause = f'SELECT {cleanedColumnString} FROM {table} WHERE {filter};'
+            print(sqlClause)
             # Suoritetaan SQL-lause ja luetaan tulokset kursorista
             cursor.execute(sqlClause)
             records= cursor.fetchall()
@@ -245,14 +246,16 @@ class DbConnection():
             cursor = currentConnection.cursor()
 
                
-            # Määritellään SQL lause joka palauttaa aikaleiman ja aikavyöhykkeen
+            # Määritellään SQL lause, joka palauttaa aikaleiman ja aikavyöhykkeen 
             sqlClause = f'SELECT CURRENT_TIMESTAMP;'
-                
+
             # Suoritetaan SQL-lause ja luetaan tulokset kursorista
             cursor.execute(sqlClause)
             records= cursor.fetchall()
+            print(records)
             row = records[0] # Listasta monikko (tuple)
-            column =row[0] # Monikosta arvo, joka tulee funktion tuottamana
+            column = row[0] # Monikosta arvo, joka tulee funktion tuottamana
+            print(column)
             isoDateTime = f'{column}' # Arvo merkkijonoksi muutettuna
             return isoDateTime
 
@@ -331,6 +334,7 @@ class DbConnection():
 
             # Määritellään lopullinen SQL-lause, paikkamerkki %s korvautuu binääritiedolla
             sqlClause = f'UPDATE {table} SET  {column} = %s WHERE {criteriaColumn} = {criteriaValue}'
+            print(sqlClause)
             # Suoritetaan SQL-lause
             cursor.execute(sqlClause, (data,))
 
@@ -383,3 +387,4 @@ if __name__ == '__main':
                       'password': 'Q2werty' }
 
     dbConnection = DbConnection(settingsDictionary)
+    print(dbConnection.connectionString)
