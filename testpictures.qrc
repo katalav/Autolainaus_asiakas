@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="png">
+    <file>uiPictures/cropped-raseko-logo-pysty_vari.webp</file>
     <file>uiPictures/clock.drawio</file>
     <file>uiPictures/goBackArrow.drawio</file>
     <file>uiPictures/calendar.drawio</file>

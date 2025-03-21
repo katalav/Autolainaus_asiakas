@@ -312,7 +312,7 @@ color: rgb(0, 33, 72);</string>
    <widget class="QLabel" name="teacherLabel">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>110</x>
       <y>20</y>
       <width>151</width>
       <height>151</height>
@@ -397,8 +397,8 @@ font: 24pt &quot;Segoe UI&quot;;</string>
    <widget class="QPushButton" name="goBackPushButton">
     <property name="geometry">
      <rect>
-      <x>1020</x>
-      <y>60</y>
+      <x>870</x>
+      <y>30</y>
       <width>251</width>
       <height>61</height>
      </rect>
@@ -509,6 +509,25 @@ background-color: rgb(0, 33, 72);
       <bool>true</bool>
      </property>
     </widget>
+   </widget>
+   <widget class="QLabel" name="RasekoLabel">
+    <property name="geometry">
+     <rect>
+      <x>1180</x>
+      <y>10</y>
+      <width>111</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="testpictures.qrc">:/png/uiPictures/cropped-raseko-logo-pysty_vari.webp</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

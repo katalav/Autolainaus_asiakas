@@ -150,6 +150,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.ui.saveReturnPushButton.setEnabled(True)
         self.ui.savePushButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.ui.savePushButton.setEnabled(True)
+        self.ui.availablePlainTextEdit.clear()
+        self.ui.rentedPlainTextEdit.clear()
         
         # Palautetaan auton oletuskuva
         self.ui.carPhotoLabel.setPixmap(self.defaultVehiclePicture)
@@ -179,32 +181,33 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         try:
             # Luodaan tietokantayhteys-olio
             dbConnection = dbOperations.DbConnection(dbSettings)
-            # Luodaan ajossa näkymästä lista, jonka jäsenet ovat monikoita (tuple)
+            # Luetaan ajossa näkymästä lista, jonka jäsenet ovat monikoita (tuple)
             inUseVehicles = dbConnection.readAllColumnsFromTable('ajossa')
-            
+
             # Alustetaan tyhjä lista muokattuja autotietoja varten
             modifiedInUseVehiclesList = []
+
+            # Alustetaan tyhjä lista, jotta monikkoon voi tehdä muutoksia
             
-            # alustetaan tyhjä lista, jotta monikkoon voi tehdä muutoksia
-            modifiedInUseVehicles = []
-            # Käydään lista läpi ja lisätään monikon alkiot lista
+
+            # Käydään lista läpi ja lisätään monikon alkiot listaan
             for vehicleTuple in inUseVehicles:
-                
+                modifiedInUseVehicles = []
                 modifiedInUseVehicles.append(vehicleTuple[0])
                 modifiedInUseVehicles.append(vehicleTuple[1])
                 modifiedInUseVehicles.append(vehicleTuple[2])
                 modifiedInUseVehicles.append(vehicleTuple[3])
                 modifiedInUseVehicles.append(vehicleTuple[4])
-                
+
                 # Lisätään sana paikkaa
                 modifiedInUseVehicles.append('paikkaa')
                 modifiedInUseVehicles.append(vehicleTuple[5])
-                
+
                 # Muutetaan lista takaisin monikoksi
-                modifiedInUseVehicleTuple = tuple(modifiedInUseVehicles)
+                modifiedInsUseVehicleTuple = tuple(modifiedInUseVehicles)
                 
-                # Lisätään monikko lopulliseej listaan
-                modifiedInUseVehiclesList.append(modifiedInUseVehicleTuple)
+                # Lisätään monikko lopulliseen listaan
+                modifiedInUseVehiclesList.append(modifiedInsUseVehicleTuple)   
                 
            # muodostetaan luettelo vapaista autoista createCatalog-metodilla
             catalogData = self.createCatalog(modifiedInUseVehiclesList)
@@ -217,6 +220,19 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             text = 'Ajossa olevien autojen tiedot eivät ole saatavissa'
             detailedText = str(e)
             self.openWarning(title, text, detailedText)
+            
+        # Aktivoidaan lainaus- ja palautuspainikkeet, jos lainattavia tai palautettaiva autoja
+        print('Vapaana:', self.ui.availablePlainTextEdit.toPlainText())
+        print('Ajossa:', self.ui.rentedPlainTextEdit.toPlainText())
+        if self.ui.availablePlainTextEdit.toPlainText() == '':
+            self.ui.takeCarPushButton.setEnabled(False)
+        else:
+            self.ui.takeCarPushButton.setEnabled(True)
+
+        if self.ui.rentedPlainTextEdit.toPlainText() == '':
+            self.ui.returnCarPushButton.setEnabled(False)
+        else:
+            self.ui.returnCarPushButton.setEnabled(True)
         
     # Näyttää "lue ajokortti" labolin ja syöttö kentän
     
