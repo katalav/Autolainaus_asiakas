@@ -38,7 +38,7 @@
 
   # Add a bitmap (150 x 57 px) for a logo into the header of the installer page
   !define MUI_HEADERIMAGE
-  !define MUI_HEADERIMAGE_BITMAP "VWbg 1.bmp"
+  !define MUI_HEADERIMAGE_BITMAP "VWbg1.bmp"
 
   # Set left side image for start and end pages
   !define MUI_WELCOMEFINISHPAGE_BITMAP "${NSISDIR}\Contrib\Graphics\Wizard\orange.bmp"
