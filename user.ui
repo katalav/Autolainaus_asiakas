@@ -36,9 +36,9 @@ background-color: rgb(51, 167, 181);</string>
    <widget class="QFrame" name="namesFrame">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>60</x>
       <y>210</y>
-      <width>1041</width>
+      <width>1241</width>
       <height>501</height>
      </rect>
     </property>
@@ -65,7 +65,7 @@ font: 28pt &quot;Segoe UI&quot;;</string>
     <widget class="QLineEdit" name="readIdLineEdit">
      <property name="geometry">
       <rect>
-       <x>100</x>
+       <x>60</x>
        <y>180</y>
        <width>231</width>
        <height>71</height>
@@ -83,7 +83,7 @@ color: rgb(0, 0, 0);</string>
     <widget class="QLineEdit" name="keyBarcodeLineEdit">
      <property name="geometry">
       <rect>
-       <x>510</x>
+       <x>660</x>
        <y>160</y>
        <width>231</width>
        <height>71</height>
@@ -101,8 +101,8 @@ color: rgb(0, 0, 0);</string>
     <widget class="QLabel" name="readIdLabel">
      <property name="geometry">
       <rect>
-       <x>110</x>
-       <y>90</y>
+       <x>70</x>
+       <y>100</y>
        <width>211</width>
        <height>51</height>
       </rect>
@@ -121,8 +121,8 @@ background-color: rgb(0, 33, 72);</string>
     <widget class="QLabel" name="keyBarcodeLabel">
      <property name="geometry">
       <rect>
-       <x>520</x>
-       <y>90</y>
+       <x>690</x>
+       <y>100</y>
        <width>211</width>
        <height>51</height>
       </rect>
@@ -141,7 +141,7 @@ background-color: rgb(0, 33, 72);</string>
     <widget class="QLineEdit" name="keyBarcodeReturnLineEdit">
      <property name="geometry">
       <rect>
-       <x>510</x>
+       <x>680</x>
        <y>160</y>
        <width>231</width>
        <height>71</height>
@@ -159,7 +159,7 @@ color: rgb(0, 0, 0);</string>
     <widget class="QLabel" name="lenderNameLabel">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>40</x>
        <y>180</y>
        <width>281</width>
        <height>71</height>
@@ -208,7 +208,7 @@ color: rgb(0, 33, 72);</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="testpictures.qrc">:/png/uiPictures/calendar.drawio</pixmap>
+      <pixmap>:/png/uiPictures/calendar.drawio</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -243,7 +243,7 @@ color: rgb(0, 33, 72);</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="testpictures.qrc">:/png/uiPictures/clock.drawio</pixmap>
+      <pixmap>:/png/uiPictures/clock.drawio</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -252,8 +252,8 @@ color: rgb(0, 33, 72);</string>
     <widget class="QLabel" name="carPhotoLabel">
      <property name="geometry">
       <rect>
-       <x>770</x>
-       <y>200</y>
+       <x>930</x>
+       <y>180</y>
        <width>251</width>
        <height>191</height>
       </rect>
@@ -288,7 +288,7 @@ font: 28pt &quot;Segoe UI&quot;;</string>
     <widget class="QLabel" name="carsInfoStatusLabel">
      <property name="geometry">
       <rect>
-       <x>490</x>
+       <x>630</x>
        <y>160</y>
        <width>281</width>
        <height>71</height>
@@ -308,11 +308,47 @@ color: rgb(0, 33, 72);</string>
       <set>Qt::AlignmentFlag::AlignCenter</set>
      </property>
     </widget>
+    <widget class="QComboBox" name="reasonComboBox">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>190</y>
+       <width>221</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background: rgb(255, 255, 255)</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="reasonLabel">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>100</y>
+       <width>211</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 22pt &quot;Segoe UI&quot;;
+background-color: rgb(0, 33, 72);</string>
+     </property>
+     <property name="text">
+      <string>Ajon tarkoitus</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+    </widget>
    </widget>
    <widget class="QLabel" name="teacherLabel">
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>190</x>
       <y>20</y>
       <width>151</width>
       <height>151</height>
@@ -331,7 +367,7 @@ color: rgb(0, 33, 72);</string>
    <widget class="QLabel" name="statusLabel">
     <property name="geometry">
      <rect>
-      <x>550</x>
+      <x>530</x>
       <y>20</y>
       <width>281</width>
       <height>71</height>
@@ -397,8 +433,8 @@ font: 24pt &quot;Segoe UI&quot;;</string>
    <widget class="QPushButton" name="goBackPushButton">
     <property name="geometry">
      <rect>
-      <x>870</x>
-      <y>30</y>
+      <x>1030</x>
+      <y>40</y>
       <width>251</width>
       <height>61</height>
      </rect>
@@ -417,7 +453,7 @@ background-color: rgb(0, 33, 72);
      <string>Kumoa</string>
     </property>
     <property name="icon">
-     <iconset resource="testpictures.qrc">
+     <iconset>
       <normaloff>:/png/uiPictures/goBackArrow.drawio</normaloff>:/png/uiPictures/goBackArrow.drawio</iconset>
     </property>
     <property name="iconSize">
@@ -427,10 +463,29 @@ background-color: rgb(0, 33, 72);
      </size>
     </property>
    </widget>
+   <widget class="QLabel" name="RasekoLabel">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>20</y>
+      <width>111</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>:/png/uiPictures/cropped-raseko-logo-pysty_vari.webp</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
    <widget class="QFrame" name="startFrame">
     <property name="geometry">
      <rect>
-      <x>70</x>
+      <x>40</x>
       <y>190</y>
       <width>1241</width>
       <height>541</height>
@@ -509,25 +564,6 @@ background-color: rgb(0, 33, 72);
       <bool>true</bool>
      </property>
     </widget>
-   </widget>
-   <widget class="QLabel" name="RasekoLabel">
-    <property name="geometry">
-     <rect>
-      <x>1180</x>
-      <y>10</y>
-      <width>111</width>
-      <height>161</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap resource="testpictures.qrc">:/png/uiPictures/cropped-raseko-logo-pysty_vari.webp</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

@@ -16,9 +16,9 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QLineEdit,
-    QMainWindow, QPlainTextEdit, QPushButton, QSizePolicy,
-    QStatusBar, QWidget)
+from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QLabel,
+    QLineEdit, QMainWindow, QPlainTextEdit, QPushButton,
+    QSizePolicy, QStatusBar, QWidget)
 import testpictures_rc
 
 class Ui_MainWindow(object):
@@ -44,7 +44,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.namesFrame = QFrame(self.centralwidget)
         self.namesFrame.setObjectName(u"namesFrame")
-        self.namesFrame.setGeometry(QRect(170, 210, 1041, 501))
+        self.namesFrame.setGeometry(QRect(60, 210, 1241, 501))
         self.namesFrame.setStyleSheet(u"background-color: rgb(0, 98, 117);")
         self.savePushButton = QPushButton(self.namesFrame)
         self.savePushButton.setObjectName(u"savePushButton")
@@ -53,37 +53,37 @@ class Ui_MainWindow(object):
 "font: 28pt \"Segoe UI\";")
         self.readIdLineEdit = QLineEdit(self.namesFrame)
         self.readIdLineEdit.setObjectName(u"readIdLineEdit")
-        self.readIdLineEdit.setGeometry(QRect(100, 180, 231, 71))
+        self.readIdLineEdit.setGeometry(QRect(60, 180, 231, 71))
         self.readIdLineEdit.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
 "font: 22pt \"Segoe UI\";\n"
 "color: rgb(0, 0, 0);")
         self.keyBarcodeLineEdit = QLineEdit(self.namesFrame)
         self.keyBarcodeLineEdit.setObjectName(u"keyBarcodeLineEdit")
-        self.keyBarcodeLineEdit.setGeometry(QRect(510, 160, 231, 71))
+        self.keyBarcodeLineEdit.setGeometry(QRect(660, 160, 231, 71))
         self.keyBarcodeLineEdit.setStyleSheet(u"font: 28pt \"Segoe UI\";\n"
 "background-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 0, 0);")
         self.readIdLabel = QLabel(self.namesFrame)
         self.readIdLabel.setObjectName(u"readIdLabel")
-        self.readIdLabel.setGeometry(QRect(110, 90, 211, 51))
+        self.readIdLabel.setGeometry(QRect(70, 100, 211, 51))
         self.readIdLabel.setStyleSheet(u"font: 22pt \"Segoe UI\";\n"
 "background-color: rgb(0, 33, 72);")
         self.readIdLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.keyBarcodeLabel = QLabel(self.namesFrame)
         self.keyBarcodeLabel.setObjectName(u"keyBarcodeLabel")
-        self.keyBarcodeLabel.setGeometry(QRect(520, 90, 211, 51))
+        self.keyBarcodeLabel.setGeometry(QRect(690, 100, 211, 51))
         self.keyBarcodeLabel.setStyleSheet(u"font: 22pt \"Segoe UI\";\n"
 "background-color: rgb(0, 33, 72);")
         self.keyBarcodeLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.keyBarcodeReturnLineEdit = QLineEdit(self.namesFrame)
         self.keyBarcodeReturnLineEdit.setObjectName(u"keyBarcodeReturnLineEdit")
-        self.keyBarcodeReturnLineEdit.setGeometry(QRect(510, 160, 231, 71))
+        self.keyBarcodeReturnLineEdit.setGeometry(QRect(680, 160, 231, 71))
         self.keyBarcodeReturnLineEdit.setStyleSheet(u"font: 28pt \"Segoe UI\";\n"
 "background-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 0, 0);")
         self.lenderNameLabel = QLabel(self.namesFrame)
         self.lenderNameLabel.setObjectName(u"lenderNameLabel")
-        self.lenderNameLabel.setGeometry(QRect(80, 180, 281, 71))
+        self.lenderNameLabel.setGeometry(QRect(40, 180, 281, 71))
         self.lenderNameLabel.setStyleSheet(u"font: 12pt \"Segoe UI\";\n"
 "color: rgb(0, 33, 72);")
         self.lenderNameLabel.setScaledContents(False)
@@ -108,7 +108,7 @@ class Ui_MainWindow(object):
         self.clockLabel.setScaledContents(True)
         self.carPhotoLabel = QLabel(self.namesFrame)
         self.carPhotoLabel.setObjectName(u"carPhotoLabel")
-        self.carPhotoLabel.setGeometry(QRect(770, 200, 251, 191))
+        self.carPhotoLabel.setGeometry(QRect(930, 180, 251, 191))
         self.carPhotoLabel.setPixmap(QPixmap(u"../../../Pictures/XUX682.png"))
         self.carPhotoLabel.setScaledContents(True)
         self.saveReturnPushButton = QPushButton(self.namesFrame)
@@ -118,19 +118,29 @@ class Ui_MainWindow(object):
 "font: 28pt \"Segoe UI\";")
         self.carsInfoStatusLabel = QLabel(self.namesFrame)
         self.carsInfoStatusLabel.setObjectName(u"carsInfoStatusLabel")
-        self.carsInfoStatusLabel.setGeometry(QRect(490, 160, 281, 71))
+        self.carsInfoStatusLabel.setGeometry(QRect(630, 160, 281, 71))
         self.carsInfoStatusLabel.setStyleSheet(u"font: 12pt \"Segoe UI\";\n"
 "color: rgb(0, 33, 72);")
         self.carsInfoStatusLabel.setScaledContents(False)
         self.carsInfoStatusLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.reasonComboBox = QComboBox(self.namesFrame)
+        self.reasonComboBox.setObjectName(u"reasonComboBox")
+        self.reasonComboBox.setGeometry(QRect(370, 190, 221, 61))
+        self.reasonComboBox.setStyleSheet(u"background: rgb(255, 255, 255)")
+        self.reasonLabel = QLabel(self.namesFrame)
+        self.reasonLabel.setObjectName(u"reasonLabel")
+        self.reasonLabel.setGeometry(QRect(380, 100, 211, 51))
+        self.reasonLabel.setStyleSheet(u"font: 22pt \"Segoe UI\";\n"
+"background-color: rgb(0, 33, 72);")
+        self.reasonLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.teacherLabel = QLabel(self.centralwidget)
         self.teacherLabel.setObjectName(u"teacherLabel")
-        self.teacherLabel.setGeometry(QRect(110, 20, 151, 151))
+        self.teacherLabel.setGeometry(QRect(190, 20, 151, 151))
         self.teacherLabel.setPixmap(QPixmap(u"uiPictures/teacher.png"))
         self.teacherLabel.setScaledContents(True)
         self.statusLabel = QLabel(self.centralwidget)
         self.statusLabel.setObjectName(u"statusLabel")
-        self.statusLabel.setGeometry(QRect(550, 20, 281, 71))
+        self.statusLabel.setGeometry(QRect(530, 20, 281, 71))
         self.statusLabel.setStyleSheet(u"font: 28pt \"Segoe UI\";\n"
 "color: rgb(0, 33, 72);")
         self.statusLabel.setScaledContents(False)
@@ -152,7 +162,7 @@ class Ui_MainWindow(object):
 "font: 24pt \"Segoe UI\";")
         self.goBackPushButton = QPushButton(self.centralwidget)
         self.goBackPushButton.setObjectName(u"goBackPushButton")
-        self.goBackPushButton.setGeometry(QRect(870, 30, 251, 61))
+        self.goBackPushButton.setGeometry(QRect(1030, 40, 251, 61))
         font1 = QFont()
         font1.setPointSize(24)
         self.goBackPushButton.setFont(font1)
@@ -163,9 +173,14 @@ class Ui_MainWindow(object):
         icon1.addFile(u":/png/uiPictures/goBackArrow.drawio", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.goBackPushButton.setIcon(icon1)
         self.goBackPushButton.setIconSize(QSize(24, 24))
+        self.RasekoLabel = QLabel(self.centralwidget)
+        self.RasekoLabel.setObjectName(u"RasekoLabel")
+        self.RasekoLabel.setGeometry(QRect(30, 20, 111, 161))
+        self.RasekoLabel.setPixmap(QPixmap(u":/png/uiPictures/cropped-raseko-logo-pysty_vari.webp"))
+        self.RasekoLabel.setScaledContents(True)
         self.startFrame = QFrame(self.centralwidget)
         self.startFrame.setObjectName(u"startFrame")
-        self.startFrame.setGeometry(QRect(70, 190, 1241, 541))
+        self.startFrame.setGeometry(QRect(40, 190, 1241, 541))
         self.startFrame.setStyleSheet(u"background-color: rgb(0, 98, 117);")
         self.startFrame.setFrameShape(QFrame.Shape.StyledPanel)
         self.startFrame.setFrameShadow(QFrame.Shadow.Raised)
@@ -187,11 +202,6 @@ class Ui_MainWindow(object):
         self.rentedPlainTextEdit.setGeometry(QRect(660, 100, 521, 391))
         self.rentedPlainTextEdit.setStyleSheet(u"font: 14pt \"Segoe UI\";")
         self.rentedPlainTextEdit.setReadOnly(True)
-        self.RasekoLabel = QLabel(self.centralwidget)
-        self.RasekoLabel.setObjectName(u"RasekoLabel")
-        self.RasekoLabel.setGeometry(QRect(1180, 10, 111, 161))
-        self.RasekoLabel.setPixmap(QPixmap(u":/png/uiPictures/cropped-raseko-logo-pysty_vari.webp"))
-        self.RasekoLabel.setScaledContents(True)
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -226,13 +236,17 @@ class Ui_MainWindow(object):
         self.carPhotoLabel.setText("")
         self.saveReturnPushButton.setText(QCoreApplication.translate("MainWindow", u"Tallenna", None))
         self.carsInfoStatusLabel.setText("")
+#if QT_CONFIG(tooltip)
+        self.reasonComboBox.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><br/></p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+        self.reasonLabel.setText(QCoreApplication.translate("MainWindow", u"Ajon tarkoitus", None))
         self.teacherLabel.setText("")
         self.statusLabel.setText(QCoreApplication.translate("MainWindow", u"Autonlainaus", None))
         self.takeCarPushButton.setText(QCoreApplication.translate("MainWindow", u"Lainaus", None))
         self.returnCarPushButton.setText(QCoreApplication.translate("MainWindow", u"Palautus", None))
         self.goBackPushButton.setText(QCoreApplication.translate("MainWindow", u"Kumoa", None))
+        self.RasekoLabel.setText("")
         self.vapaanaLabel.setText(QCoreApplication.translate("MainWindow", u"Vapaana", None))
         self.ajossaLabel.setText(QCoreApplication.translate("MainWindow", u"Ajossa", None))
-        self.RasekoLabel.setText("")
     # retranslateUi
 
