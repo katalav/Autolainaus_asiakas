@@ -223,8 +223,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 
            # muodostetaan luettelo vapaista autoista createCatalog-metodilla
             catalogData = self.createCatalog(modifiedInUseVehiclesList)
-            print(modifiedInUseVehiclesList)
-            print(catalogData)
             self.ui.rentedPlainTextEdit.setPlainText(catalogData)
             
         except Exception as e:
@@ -234,8 +232,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.openWarning(title, text, detailedText)
             
         # Aktivoidaan lainaus- ja palautuspainikkeet, jos lainattavia tai palautettaiva autoja
-        print('Vapaana:', self.ui.availablePlainTextEdit.toPlainText())
-        print('Ajossa:', self.ui.rentedPlainTextEdit.toPlainText())
         if self.ui.availablePlainTextEdit.toPlainText() == '':
             self.ui.takeCarPushButton.setEnabled(False)
         else:
