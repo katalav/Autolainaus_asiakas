@@ -75,7 +75,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         # Kun lainaa painiketta kutsutaan activateReason-metodia
         self.ui.takeCarPushButton.clicked.connect(self.activateReason)
         
-       
+        # Kun ajon tarkoitus on valittu, kutsutaan activatelender-metodia
+        self.ui.reasonComboBox.currentIndexChanged.connect(self.activateLender)
 
         #Kun ajokortin viivakoodia painetaan, kutsutaan activateKey-metodia
         self.ui.readIdLineEdit.returnPressed.connect(self.activateKey)
@@ -248,12 +249,37 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     
     # Näyttää ajon tarkoitus -yhdistelmäruudun
     def activateReason(self):
+        
+        # Asetetaan elementtien näkyvyydet
+
+        self.ui.readIdLabel.hide()
+        self.ui.namesFrame.show()
         self.ui.statusLabel.setText('Auton Lainaus')
         self.ui.goBackPushButton.show()
+        self.ui.returnCarPushButton.hide()
+        self.ui.takeCarPushButton.hide()
         self.ui.reasonLabel.show()
         self.ui.reasonComboBox.show()
+
+
         
+        # Päivitetään ajon tarkoitus- yhdistelmäruudun arvot
+        dbSettings = self.currentSettings
+        plainTextPassword = self.plainTextPassword
+        dbSettings['password'] = plainTextPassword # Vaidetaan selväkieliseksi
+
+        # Tehdään lista ajon tarkoituksista
+        dbConnection = dbOperations.DbConnection(dbSettings)
+
+        #
+        reasonList = dbConnection.readColumsFromTable('tarkoitus', ['tarkoitus'])
+        reasonStringList = []
+        for item in reasonList:
+            stringValue = str(item[0])
+            reasonStringList.append(stringValue)
         
+        self.ui.reasonComboBox.clear()
+        self.ui.reasonComboBox.addItems(reasonStringList)
     
         
     # Näyttää "lue ajokortti" labolin ja syöttö kentän
@@ -274,8 +300,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.ui.savePushButton.hide()
         self.ui.saveReturnPushButton.hide()
         self.ui.startFrame.hide()
-        self.ui.reasonComboBox.hide()
-        self.ui.reasonLabel.hide()
+        self.ui.reasonComboBox.show()
+        self.ui.reasonLabel.show()
      
         
     #Näyttää "syätä avain" labolin ja avaimmen syöttö kentän
@@ -412,9 +438,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         try:
             # Luodaan tietokantayhteys-olio
             dbConnection = dbOperations.DbConnection(dbSettings)
-            ssn = self.ui.readIdLineEdit.text()
-            key = self.ui.keyBarcodeLineEdit.text()
-            dataDictionary = {'hetu': ssn,
+            reason = self.ui.reasonComboBox.currentText() # Tarkoitus ajopäiväkirjaan
+            ssn = self.ui.readIdLineEdit.text() # Henkilötunnus ajopäiväkirjaan
+            key = self.ui.keyBarcodeLineEdit.text() # Rekisterinumero ajopäiväkirjaan 
+            dataDictionary = {'tarkoitus': reason,
+                            'hetu': ssn,
                             'rekisterinumero': key}
             dbConnection.addToTable('lainaus', dataDictionary)
 

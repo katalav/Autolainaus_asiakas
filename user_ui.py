@@ -126,7 +126,9 @@ class Ui_MainWindow(object):
         self.reasonComboBox = QComboBox(self.namesFrame)
         self.reasonComboBox.setObjectName(u"reasonComboBox")
         self.reasonComboBox.setGeometry(QRect(370, 190, 221, 61))
-        self.reasonComboBox.setStyleSheet(u"background: rgb(255, 255, 255)")
+        self.reasonComboBox.setStyleSheet(u"color: rgb(0, 33, 72);\n"
+"font: 12pt \"Segoe UI\";\n"
+"background-color: rgb(255, 255, 255);")
         self.reasonLabel = QLabel(self.namesFrame)
         self.reasonLabel.setObjectName(u"reasonLabel")
         self.reasonLabel.setGeometry(QRect(380, 100, 211, 51))
