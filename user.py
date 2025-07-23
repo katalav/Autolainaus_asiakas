@@ -256,6 +256,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.ui.takeCarPushButton.hide()
         self.ui.reasonLabel.show()
         self.ui.reasonComboBox.show()
+        
 
 
         
