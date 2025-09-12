@@ -346,89 +346,6 @@ background-color: rgb(0, 33, 72);</string>
       <set>Qt::AlignmentFlag::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QFrame" name="startFrame">
-     <property name="geometry">
-      <rect>
-       <x>-30</x>
-       <y>-10</y>
-       <width>1241</width>
-       <height>541</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(0, 98, 117);</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::Shape::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Shadow::Raised</enum>
-     </property>
-     <widget class="QLabel" name="vapaanaLabel">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>40</y>
-        <width>121</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 22pt &quot;Segoe UI&quot;;</string>
-      </property>
-      <property name="text">
-       <string>Vapaana</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="ajossaLabel">
-      <property name="geometry">
-       <rect>
-        <x>870</x>
-        <y>40</y>
-        <width>81</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 22pt &quot;Segoe UI&quot;;</string>
-      </property>
-      <property name="text">
-       <string>Ajossa</string>
-      </property>
-     </widget>
-     <widget class="QPlainTextEdit" name="availablePlainTextEdit">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>100</y>
-        <width>531</width>
-        <height>391</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 14pt &quot;Segoe UI&quot;;</string>
-      </property>
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QPlainTextEdit" name="rentedPlainTextEdit">
-      <property name="geometry">
-       <rect>
-        <x>660</x>
-        <y>100</y>
-        <width>521</width>
-        <height>391</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 14pt &quot;Segoe UI&quot;;</string>
-      </property>
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </widget>
    </widget>
    <widget class="QLabel" name="teacherLabel">
     <property name="geometry">
@@ -566,6 +483,89 @@ background-color: rgb(0, 33, 72);
     <property name="scaledContents">
      <bool>true</bool>
     </property>
+   </widget>
+   <widget class="QFrame" name="startFrame">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>180</y>
+      <width>1241</width>
+      <height>541</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(0, 98, 117);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+    <widget class="QLabel" name="vapaanaLabel">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>40</y>
+       <width>121</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 22pt &quot;Segoe UI&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Vapaana</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="ajossaLabel">
+     <property name="geometry">
+      <rect>
+       <x>870</x>
+       <y>40</y>
+       <width>81</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 22pt &quot;Segoe UI&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Ajossa</string>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="availablePlainTextEdit">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>100</y>
+       <width>531</width>
+       <height>391</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14pt &quot;Segoe UI&quot;;</string>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="rentedPlainTextEdit">
+     <property name="geometry">
+      <rect>
+       <x>660</x>
+       <y>100</y>
+       <width>521</width>
+       <height>391</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14pt &quot;Segoe UI&quot;;</string>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
