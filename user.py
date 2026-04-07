@@ -484,7 +484,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         dbConnection = dbOperations.DbConnection(dbSettings)
         criteria = f"'{self.ui.keyBarcodeReturnLineEdit.text()}'" # Tekstiä -> Lisää ':t
         
-        dbConnection.modifyTableData('lainaus', 'palautus', 'CURRENT_TIMESTAMP', 'rekisterinumero', criteria)        
+        dbConnection.updateReturnTimeStamp('lainaus', 'palautus', 'rekisterinumero', criteria)       
         
         self.ui.statusbar.showMessage('auto palautettu')
         self.setInitialElements()
