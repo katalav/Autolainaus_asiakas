@@ -97,12 +97,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         
         #kun tallenna painiketta on painettu
         self.ui.saveReturnPushButton.clicked.connect(self.saveReturnData)
-        
-        # Kun mykistä painiketta painetaan, kutsutaan mute-metodia
-        #self.ui.soundOffPushButton.clicked.connect(self.mute)
 
-        # Kun äänipäiniketta painetaan, kutsutaan unmute-metodia
-        #self.ui.soundOnPushButton.clicked.connect(self.unmute)
 
         # Kun kumoa painiketta painetaan palautetaan UI-alkutilaan
         self.ui.goBackPushButton.clicked.connect(self.goBack)
