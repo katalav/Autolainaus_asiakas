@@ -4,9 +4,7 @@
 
 # KIRJASTOJEN JA MODUULIEN LATAUKSET
 # ----------------------------------
-import os # Polkumääritykset
-import sys # Käynnistysargumentit
-import json # JSON-tiedostojen käsittely
+
 import os # Polkumääritykset
 import sys # Käynnistysargumentit
 import json # JSON-tiedostojen käsittely
@@ -97,7 +95,12 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         
         #kun tallenna painiketta on painettu
         self.ui.saveReturnPushButton.clicked.connect(self.saveReturnData)
+        
+        # Kun mykistä painiketta painetaan, kutsutaan mute-metodia
+        #self.ui.soundOffPushButton.clicked.connect(self.mute)
 
+        # Kun äänipäiniketta painetaan, kutsutaan unmute-metodia
+        #self.ui.soundOnPushButton.clicked.connect(self.unmute)
 
         # Kun kumoa painiketta painetaan palautetaan UI-alkutilaan
         self.ui.goBackPushButton.clicked.connect(self.goBack)
@@ -486,7 +489,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         plainTextPassword = self.plainTextPassword
         dbSettings['password'] = plainTextPassword # Vaihdetaan selväkieliseksi
         dbConnection = dbOperations.DbConnection(dbSettings)
-        registerNumber = f"'{self.ui.keyReturnBarcodeLineEdit.text()}'" # Tekstiä -> lisää ':t
+        registerNumber = f"{self.ui.keyBarcodeReturnLineEdit.text()}" # Tekstiä -> lisää ':t
 
         # dbConnection.updateReturnTimeStamp('lainaus', 'palautusaika', 'rekisterinumero', criteria)
         

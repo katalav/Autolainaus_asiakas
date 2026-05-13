@@ -433,7 +433,7 @@ class DbConnection():
             cursor = currentConnection.cursor()
 
             # Määritellään lopullinen SQL-lause
-            sqlClause = f"SELECT lainausnumero FROM public.lainaus WHERE rekisterinumero = '{registernumber}' AND palautusaika IS NULL"
+            sqlClause = f"SELECT lainausnumero FROM public.lainaus WHERE rekisterinumero = '{registernumber}' AND palautus IS NULL"
 
             cursor.execute(sqlClause)
             record= cursor.fetchone()
@@ -508,7 +508,7 @@ class DbConnection():
             cursor = currentConnection.cursor()
 
             # Määritellään lopullinen SQL-lause
-            sqlClause = f"SELECT lainausaika, palautusaika FROM public.lainaus WHERE lainausnumero = '{lendingId}'"
+            sqlClause = f"SELECT lainausaika, palautus FROM public.lainaus WHERE lainausnumero = '{lendingId}'"
 
             cursor.execute(sqlClause)
             timestamps = cursor.fetchone()
@@ -530,7 +530,7 @@ class DbConnection():
         Args:
             lendingId (int): Id for a lending event
         """  
-        sqlClause = f"UPDATE public.lainaus SET palautusaika = CURRENT_TIMESTAMP WHERE lainausnumero = {lendingId}"      
+        sqlClause = f"UPDATE public.lainaus SET palautus = CURRENT_TIMESTAMP WHERE lainausnumero = {lendingId}"      
         try:
             # Luodaan yhteys tietokantaan
             currentConnection = psycopg2.connect(self.connectionString)
