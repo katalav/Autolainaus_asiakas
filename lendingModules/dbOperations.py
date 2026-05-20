@@ -305,9 +305,8 @@ class DbConnection():
             if currentConnection:
                 cursor.close() # Tuhotaan kursori
                 currentConnection.close() # Tuhotaan yhteys
-
-# TODO  LISÄYKSIÄ VAROVASTI TARKASTA ET OVAT OIKEIN KATANEN 
-
+                
+#TODO TÄMÄ ON RIKKI. Selvitä miten tää pitäs korjata ettei ylikirjota koko hiton palautus aikaa. Ilmesesti menee jotenkin ristiin ton SetReturnTimeStamp härpäkkeen kanssa. 
 
     def updateReturnTimeStamp(self, table: str, column: str,criteriaColumn: str, criteriaValue):
         """Updataes a column according to a filtering criteria
@@ -417,7 +416,7 @@ class DbConnection():
                 currentConnection.close() # Tuhotaan yhteys
    
    
-   # LISÄYS 
+
     def getNotReturnedId(self, registernumber):
         """Retrieves a lending id of a vehicle not returned by registernumber
 
@@ -485,8 +484,8 @@ class DbConnection():
             if currentConnection:
                 cursor.close() # Tuhotaan kursori
                 currentConnection.close() # Tuhotaan yhteys
-                
-# LISÄYS 
+
+
     def getTimestamps(self, lendingId):
         """Reads starting and ending timestamps for a given lending ID
 
@@ -507,14 +506,14 @@ class DbConnection():
             # Luodaan kursori suorittamaan tietokantoperaatiota
             cursor = currentConnection.cursor()
 
-            # Määritellään lopullinen SQL-lause
+            # Määritellään lopullinen SQL lause
             sqlClause = f"SELECT lainausaika, palautus FROM public.lainaus WHERE lainausnumero = '{lendingId}'"
 
             cursor.execute(sqlClause)
             timestamps = cursor.fetchone()
             return timestamps
 
-        # Jos tapahtuu virhe, välitetään se luokkaa käyttävälle ohjelmalle
+        # Jos tapahtuu virhe välitetään se luokkaa käyttävälle ohjelmalle
         except (Exception, psycopg2.Error) as e:
             raise e 
         finally:
@@ -551,7 +550,7 @@ class DbConnection():
             if currentConnection:
                 cursor.close() # Tuhotaan kursori
                 currentConnection.close() # Tuhotaan yhteys
-# LISÄYS
+
 
     def addTrip(self, lendingId, tripData):
         """Updates spatial information from trip's JSON data to a table
@@ -563,17 +562,17 @@ class DbConnection():
         
         # Muodostetaan JSON-datatasta arvot SQL-lausetta varten
         
-        aKaupunki = tripData['aKaupunki']
-        aKatu = tripData['aKatu']
-        aKatunumero = tripData['aKatunumero']
-        bKaupunki = tripData['bKaupunki']
-        bKatu = tripData['bKatu']
-        bkatunumero = tripData['bkatunumero']
-        alkukm = tripData['alkukm']
-        loppukm = tripData['loppukm']
+        aKaupunki = tripData['a_Kaupunki']
+        aKatu = tripData['a_Katu']
+        aKatunumero = tripData['a_Katunumero']
+        bKaupunki = tripData['b_Kaupunki']
+        bKatu = tripData['b_Katu']
+        bkatunumero = tripData['b_katunumero']
+        alkukm = tripData['alku_km']
+        loppukm = tripData['loppu_km']
 
         # Määritellään SQL-lause yksittäisen matkan osan tallentamiseksi
-        sqlClause = f"INSERT INTO public.web_paikkatieto( lainausnumero, a_kaupunki, a_katu, a_katunumero, b_kaupunki, b_katu, b_katunumero, alku_km, loppu_km) VALUES ({lendingId}, '{aKaupunki}', '{aKatu}', '{aKatunumero}', '{bKaupunki}', '{bKatu}', '{bkatunumero}', {alkukm}, {loppukm}"
+        sqlClause = f"INSERT INTO public.web_paikkatieto( lainausnumero, a_kaupunki, a_katu, a_katunumero, b_kaupunki, b_katu, b_katunumero, alku_km, loppu_km) VALUES ({lendingId}, '{aKaupunki}', '{aKatu}', '{aKatunumero}', '{bKaupunki}', '{bKatu}', '{bkatunumero}', {alkukm}, {loppukm})"
 
 
         try:
@@ -601,7 +600,7 @@ class DbConnection():
 
                 
                 
-                # LISÄYS 
+    
     def getDeviceId(self, registerNumber):
         """Retrieves paikannin.com's device ID from auto-taulu (vehicle)
 
@@ -639,7 +638,7 @@ if __name__ == "__main__":
                       'port': '5432',
                       'database': 'autolainaus',
                       'userName': 'postgres',
-                      'password': 'Q2werty'}
+                      'password': 'salasana'}
     dbconnection = DbConnection(settingsDictionary)
     
     
