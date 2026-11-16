@@ -156,8 +156,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.ui.carsInfoStatusLabel.hide()
         self.ui.reasonComboBox.hide()
         self.ui.reasonLabel.hide()
-        self.ui.osastoComboBox.hide()
-        self.ui.osastoLabel.hide()
+
         
         
         # Täytettävien kenttien tyhjennykset ja piilotukset
